@@ -13,7 +13,7 @@ const socials = [
   { href: 'https://tiktok.com/@kdgralpine', label: 'TikTok', Icon: FaTiktok },
 ]
 
-const interests = ['Full-Stack Web Dev', 'Systems Programming', 'Game Dev', 'Content Creation', 'Gaming', 'Colorado Outdoors']
+const interests = ['Software Engineering', 'Cybersecurity', 'Quality Assurance', 'Game Development', '3D Modeling', 'World-building', 'Planted Aquariums']
 
 export default function About() {
   return (
@@ -25,20 +25,10 @@ export default function About() {
         <div className="rounded-xl p-6 border" style={{ background: 'var(--card)', borderColor: 'var(--border)' }}>
           <h2 className="font-semibold mb-3">Who I am</h2>
           <div className="space-y-3 text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
-            <p>
-              Hey, I&apos;m Sebastian — a computer science student at Colorado State University in Fort Collins.
-              I&apos;m passionate about software that solves real problems, and I love working across the full stack
-              from low-level systems code to user-facing web apps.
-            </p>
-            <p>
-              I started coding in high school and haven&apos;t stopped since. I&apos;ve worked with Java, Python, C,
-              C++, C#, and TypeScript, and I&apos;m always picking up new tools. Currently I&apos;m focused on building
-              web projects and leveling up my systems, security, and algorithms knowledge.
-            </p>
-            <p>
-              Outside of CS, I make content, game competitively, and try to get outside as much as possible —
-              Colorado makes that easy.
-            </p>
+            <p>I’m Sebastian, a fourth-year computer science student at Colorado State University in Fort Collins. My concentration is Software Engineering, and I expect to graduate in December 2027.</p>
+            <p>My interest in computers began with building PCs and experimenting with code. I’m interested in software engineering, cybersecurity, and quality assurance, and I’m seeking a summer internship or co-op.</p>
+            <p>Pleroma is my ongoing Unreal Engine 5 project. It brings together C++ combat systems, data-driven levels, save validation, original Blender assets, and dark fantasy lore. I enjoy connecting the technical side of development with the worlds and stories it can support.</p>
+            <p>My coursework adds experience with genetic algorithms, cryptographic tools, object oriented C++, and collaboration in a five-person agile software team. Away from code, I build and maintain planted aquariums.</p>
           </div>
         </div>
 

@@ -10,10 +10,10 @@ const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin']
 
 export const metadata: Metadata = {
   title: 'Sebastian Piwko',
-  description: 'Computer science student at Colorado State University. Explore my work in C++, Unreal Engine, web development, and collaborative software projects.',
+  description: 'Colorado State University computer science student concentrating in software engineering. Explore C++ gameplay systems, Blender modeling, algorithms, and collaborative software projects.',
   openGraph: {
     title: 'Sebastian Piwko',
-    description: 'Computer science student at Colorado State University. Explore my work in C++, Unreal Engine, web development, and collaborative software projects.',
+    description: 'Colorado State University computer science student concentrating in software engineering. Explore C++ gameplay systems, Blender modeling, algorithms, and collaborative software projects.',
     type: 'website',
   },
 }

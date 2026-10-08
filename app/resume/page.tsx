@@ -1,116 +1,20 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import { ArrowUpRight } from 'lucide-react'
 import PrintResume from '@/components/PrintResume'
+import { education, skills, pleromaWork, coursework } from '@/lib/resume'
 
-export const metadata: Metadata = {
-  title: 'Resume — Sebastian Piwko',
-}
-
-const skills = {
-  Languages: ['Java', 'Python', 'C', 'C++', 'C#', 'TypeScript', 'JavaScript', 'SQL'],
-  'Web & Frameworks': ['React', 'Next.js', 'Node.js', 'Tailwind CSS', '.NET'],
-  Tools: ['Git', 'GitHub', 'VS Code', 'IntelliJ', 'Linux', 'MongoDB', 'Docker'],
-  Concepts: ['Data Structures', 'Algorithms', 'OOP', 'Systems Programming', 'Security', 'Cryptography / Encryption', 'Agile / Scrum'],
-}
-
-const tagColors: Record<string, string> = {
-  Java: '#f59e0b',
-  Python: '#3b82f6',
-  C: '#6366f1',
-  'C++': '#6366f1',
-  'C#': '#8b5cf6',
-  TypeScript: '#06b6d4',
-  JavaScript: '#eab308',
-  SQL: '#10b981',
-  React: '#38bdf8',
-  'Next.js': '#ffffff',
-  'Node.js': '#84cc16',
-  'Tailwind CSS': '#38bdf8',
-  '.NET': '#8b5cf6',
-  Git: '#f97316',
-  GitHub: '#a3a3a3',
-  'VS Code': '#3b82f6',
-  IntelliJ: '#ec4899',
-  Linux: '#f59e0b',
-  MongoDB: '#10b981',
-  Docker: '#38bdf8',
-  'Data Structures': '#10b981',
-  Algorithms: '#10b981',
-  OOP: '#f59e0b',
-  'Systems Programming': '#6366f1',
-  Security: '#ef4444',
-  'Cryptography / Encryption': '#f97316',
-  'Agile / Scrum': '#84cc16',
-}
+export const metadata: Metadata = { title: 'Résumé · Sebastian Piwko' }
 
 export default function Resume() {
-  return (
-    <div className="max-w-3xl mx-auto px-4 py-16">
-      <div className="mb-10">
-        <div className="flex items-start justify-between gap-4 flex-wrap">
-          <div>
-            <h1 className="text-3xl font-bold mb-1">Resume</h1>
-            <p className="text-sm" style={{ color: 'var(--muted)' }}>Skills, education, and experience</p>
-          </div>
-          <PrintResume />
-        </div>
-      </div>
-
-      <div className="space-y-6">
-        {/* Education */}
-        <div className="rounded-xl p-6 border" style={{ background: 'var(--card)', borderColor: 'var(--border)' }}>
-          <h2 className="font-semibold mb-4">Education</h2>
-          <div className="flex items-start justify-between gap-2 flex-wrap">
-            <div>
-              <p className="font-medium text-sm">Colorado State University</p>
-              <p className="text-sm" style={{ color: 'var(--muted)' }}>B.S. Computer Science</p>
-            </div>
-            <span className="text-xs font-mono px-2 py-1 rounded" style={{ background: 'var(--border)', color: 'var(--muted)' }}>
-              In Progress
-            </span>
-          </div>
-        </div>
-
-        {/* Skills */}
-        {Object.entries(skills).map(([category, items]) => (
-          <div key={category} className="rounded-xl p-6 border" style={{ background: 'var(--card)', borderColor: 'var(--border)' }}>
-            <h2 className="font-semibold mb-4">{category}</h2>
-            <div className="flex flex-wrap gap-2">
-              {items.map(skill => (
-                <span
-                  key={skill}
-                  className="text-sm px-3 py-1 rounded-full font-mono font-medium"
-                  style={{
-                    background: `${tagColors[skill] ?? '#64748b'}18`,
-                    color: 'var(--foreground)',
-                    border: `1px solid ${tagColors[skill] ?? '#64748b'}30`,
-                  }}
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
-
-        {/* Coursework */}
-        <div className="rounded-xl p-6 border" style={{ background: 'var(--card)', borderColor: 'var(--border)' }}>
-          <h2 className="font-semibold mb-4">Relevant Coursework</h2>
-          <ul className="text-sm space-y-1.5" style={{ color: 'var(--muted)' }}>
-            {[
-              'CS250 — Data Structures & Algorithms',
-              'CS314 - Team Project (Fall 2025)',
-              'CS320 — Software Engineering',
-              'CS356 — System Security',
-              'Computer Systems',
-            ].map(course => (
-              <li key={course} className="flex items-start gap-2">
-                <span style={{ color: 'var(--accent)' }}>›</span>
-                {course}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  )
+  return <div className="portfolio-shell subpage resume-page">
+    <div className="section-heading"><div><p className="eyebrow">BACKGROUND / SKILLS / EXPERIENCE</p><h1 className="page-title">Résumé.</h1><p className="section-intro">Sebastian Piwko · Computer Science Undergraduate Student</p></div><PrintResume /></div>
+    <p className="resume-summary">Fourth-year computer science student at Colorado State University with interests in software engineering, cybersecurity, and quality assurance. I developed a passion for computers by building PCs and experimenting with code, then carried that into Unreal Engine game development. I’m seeking a summer internship or co-op where I can contribute design and technical coding skills.</p>
+    <div className="resume-contact"><span>Fort Collins, Colorado</span><a href="mailto:sebastianpcollege@gmail.com">sebastianpcollege@gmail.com</a><a href="https://github.com/kdgralpine" target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight size={14} /></a></div>
+    <section className="resume-section"><h2>Education</h2><div className="education-row"><div><h3>{education.school}</h3><p>{education.degree} · {education.concentration} concentration</p><p>{education.location}</p></div><p className="education-date">Expected {education.graduation}</p></div></section>
+    <section className="resume-section"><h2>Skills</h2><div className="skill-groups">{Object.entries(skills).map(([category, items]) => <div key={category}><h3>{category}</h3><div className="project-tags">{items.map(skill => <span key={skill}>{skill}</span>)}</div></div>)}</div></section>
+    <section className="resume-section"><div className="section-heading"><h2>Personal project</h2><Link className="text-link" href="/projects#pleroma">Read the project story <ArrowUpRight size={16} /></Link></div><h3><a href="https://pleroma-game.vercel.app/details" target="_blank" rel="noopener noreferrer">Pleroma · Unreal Engine 5, C++, Blender <ArrowUpRight size={15} className="inline" /></a></h3><ul className="resume-bullets">{pleromaWork.map(item => <li key={item.title}>{item.description}</li>)}<li>Combining software engineering, world-building, 3D asset creation, and marketing across a large-scale personal game project.</li></ul></section>
+    <section className="resume-section"><h2>Relevant coursework projects</h2><div className="resume-coursework">{coursework.map(item => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p>{item.github && <a className="text-link" href={item.github} target="_blank" rel="noopener noreferrer">View team repository <ArrowUpRight size={15} /></a>}</article>)}</div></section>
+    <section className="resume-section"><h2>Certification</h2><p>Certified Pool Operator</p></section>
+  </div>
 }
