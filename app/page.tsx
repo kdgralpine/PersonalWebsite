@@ -1,158 +1,27 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, ExternalLink } from 'lucide-react'
-import { FaGithub, FaLinkedin, FaYoutube, FaInstagram, FaTiktok } from 'react-icons/fa6'
+import { ArrowRight, ArrowUpRight, MapPin } from 'lucide-react'
+import ProjectCard from '@/components/ProjectCard'
 import { projects } from '@/lib/projects'
-
-const socials = [
-  { href: 'https://github.com/kdgralpine', label: 'GitHub', Icon: FaGithub },
-  { href: 'https://linkedin.com/in/sebastian-piwko', label: 'LinkedIn', Icon: FaLinkedin },
-  { href: 'https://youtube.com/@kdgralpine', label: 'YouTube', Icon: FaYoutube },
-  { href: 'https://instagram.com/kdgralpine', label: 'Instagram', Icon: FaInstagram },
-  { href: 'https://tiktok.com/@kdgralpine', label: 'TikTok', Icon: FaTiktok },
-]
+import { photos } from '@/lib/photos'
 
 export default function Home() {
-  const featured = projects.filter(p => p.featured)
-
-  return (
-    <div className="max-w-5xl mx-auto px-4">
-      {/* Hero */}
-      <section className="py-14 sm:py-28">
-        <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-10">
-          <div className="flex-1">
-            <p className="text-sm font-mono mb-4" style={{ color: 'var(--accent)' }}>
-              Hi, I&apos;m
-            </p>
-            <h1 className="text-4xl sm:text-6xl font-bold tracking-tight mb-4">
-              Sebastian Piwko
-            </h1>
-            <p className="text-lg sm:text-xl mb-8" style={{ color: 'var(--muted)' }}>
-              CS Student @ Colorado State University · Building things with code
-            </p>
-            <div className="flex flex-wrap gap-3 mb-10">
-              <Link
-                href="/projects"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-80"
-                style={{ background: 'var(--accent)' }}
-              >
-                View Projects <ArrowRight size={16} />
-              </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold border transition-opacity hover:opacity-70"
-                style={{ borderColor: 'var(--border)' }}
-              >
-                About Me
-              </Link>
-            </div>
-            <div className="flex items-center gap-1">
-              {socials.map(({ href, label, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="p-2 rounded-md transition-opacity hover:opacity-60"
-                  style={{ color: 'var(--muted)' }}
-                >
-                  <Icon size={22} />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Profile photo */}
-          <div className="flex-shrink-0 self-center sm:self-auto">
-            <div
-              className="relative w-40 h-40 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border-2"
-              style={{ borderColor: 'var(--border)' }}
-            >
-              <Image
-                src="/profile.jpg"
-                alt="Sebastian Piwko"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About teaser */}
-      <section className="pb-16">
-        <h2 className="text-xs font-mono font-semibold uppercase tracking-widest mb-6" style={{ color: 'var(--muted)' }}>
-          About
-        </h2>
-        <div className="rounded-xl p-6 border" style={{ background: 'var(--card)', borderColor: 'var(--border)' }}>
-          <p className="text-base leading-relaxed mb-4">
-            I&apos;m a computer science student at CSU with a passion for building software that actually works.
-            I enjoy working across the stack — from low-level systems programming to full-stack web apps.
-            When I&apos;m not coding you&apos;ll find me making content, gaming, or exploring the outdoors in Colorado.
-          </p>
-          <Link
-            href="/about"
-            className="inline-flex items-center gap-1 text-sm font-medium transition-opacity hover:opacity-70"
-            style={{ color: 'var(--accent)' }}
-          >
-            More about me <ArrowRight size={14} />
-          </Link>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section className="pb-24">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xs font-mono font-semibold uppercase tracking-widest" style={{ color: 'var(--muted)' }}>
-            Featured Projects
-          </h2>
-          <Link
-            href="/projects"
-            className="text-sm transition-opacity hover:opacity-70"
-            style={{ color: 'var(--accent)' }}
-          >
-            View all →
-          </Link>
-        </div>
-        <div className="grid sm:grid-cols-3 gap-4">
-          {featured.map(project => (
-            <div
-              key={project.title}
-              className="rounded-xl p-5 border flex flex-col gap-3 transition-shadow hover:shadow-md"
-              style={{ background: 'var(--card)', borderColor: 'var(--border)' }}
-            >
-              <h3 className="font-semibold text-sm">{project.title}</h3>
-              <p className="text-sm leading-relaxed flex-1" style={{ color: 'var(--muted)' }}>
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {project.tags.map(tag => (
-                  <span
-                    key={tag}
-                    className="text-xs px-2 py-0.5 rounded-full font-mono"
-                    style={{ background: 'var(--border)', color: 'var(--muted)' }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs transition-opacity hover:opacity-70"
-                  style={{ color: 'var(--accent)' }}
-                >
-                  <FaGithub size={12} /> GitHub <ExternalLink size={10} />
-                </a>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
-  )
+  return <div className="portfolio-shell">
+    <section className="hero">
+      <div className="hero-copy">
+        <p className="eyebrow"><span className="status-dot" /> COMPUTER SCIENCE & CREATIVE WORK</p>
+        <h1>Sebastian<br /><span>Piwko.</span></h1>
+        <p className="hero-statement">Curious by nature.<br />A builder by practice.</p>
+        <p className="hero-description">Computer science student at Colorado State University, exploring software, systems, and the worlds we can build with code.</p>
+        <div className="hero-actions"><Link className="button primary" href="#work">Explore my work <ArrowRight size={17} /></Link><Link className="button secondary" href="/resume">View résumé <ArrowUpRight size={17} /></Link></div>
+        <div className="hero-links"><span><MapPin size={14} /> Fort Collins, Colorado</span><a href="https://github.com/kdgralpine" target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight size={14} /></a><a href="https://linkedin.com/in/sebastian-piwko" target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight size={14} /></a></div>
+      </div>
+      <figure className="portrait-card"><div className="portrait-window"><Image src="/photos/portrait.png" alt="Sebastian Piwko" fill preload sizes="(max-width: 700px) 85vw, 400px" className="portrait-image" /></div><figcaption><span>THE PERSON BEHIND THE CODE</span><span>SP / CO</span></figcaption></figure>
+    </section>
+    <div className="focus-strip"><span>A FEW THINGS I WORK WITH</span><p>C++ <i>/</i> Unreal Engine <i>/</i> TypeScript <i>/</i> React <i>/</i> Next.js</p></div>
+    <section className="section-block" id="work"><div className="section-heading"><div><p className="eyebrow">01 / SELECTED WORK</p><h2>From idea to implementation.</h2></div><Link href="/projects" className="text-link">All projects <ArrowUpRight size={18} /></Link></div><div className="project-grid">{projects.filter(p => p.featured).map((project, index) => <ProjectCard key={project.title} project={project} index={index} />)}</div></section>
+    <section className="about-band"><p className="eyebrow">02 / A LITTLE ABOUT ME</p><div><h2>I like understanding how things work.<br /><span>Then building something of my own.</span></h2><p>My interests stretch from low-level systems to web applications and game development. Pleroma gives me a place to explore gameplay systems; my coursework at CSU brings a different perspective through collaborative projects.</p><Link href="/about" className="text-link">More about me <ArrowRight size={17} /></Link></div></section>
+    <section className="section-block"><div className="section-heading"><div><p className="eyebrow">03 / BEYOND THE KEYBOARD</p><h2>A different kind of ecosystem.</h2></div><Link href="/fish-tanks" className="text-link">Explore the aquariums <ArrowUpRight size={18} /></Link></div><p className="section-intro">When I step away from code, I spend time building and maintaining planted aquariums. Here’s a glimpse of that side of my world.</p><div className="photo-grid">{photos.map((photo, index) => <figure key={photo.src}><Link href="/fish-tanks" className="photo-frame"><Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 700px) 100vw, 40vw" /></Link><figcaption><span>0{index + 1}</span>{photo.title}</figcaption></figure>)}</div></section>
+    <section className="contact-band"><div><p className="eyebrow">LET’S CONNECT</p><h2>Have something in mind?</h2><p>I’d love to talk about software, game development, and opportunities to build.</p></div><a className="button primary" href="https://linkedin.com/in/sebastian-piwko" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <ArrowUpRight size={17} /></a></section>
+  </div>
 }

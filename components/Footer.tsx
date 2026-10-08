@@ -11,7 +11,7 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="border-t mt-auto py-8" style={{ borderColor: 'var(--border)' }}>
-      <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="max-w-[1160px] mx-auto px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-sm" style={{ color: 'var(--muted)' }}>
           © {new Date().getFullYear()} Sebastian Piwko
         </p>

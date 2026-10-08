@@ -10,10 +10,10 @@ const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin']
 
 export const metadata: Metadata = {
   title: 'Sebastian Piwko',
-  description: 'CS student at Colorado State University. Building things with code.',
+  description: 'Computer science student at Colorado State University. Explore my work in C++, Unreal Engine, web development, and collaborative software projects.',
   openGraph: {
     title: 'Sebastian Piwko',
-    description: 'CS student at Colorado State University. Building things with code.',
+    description: 'Computer science student at Colorado State University. Explore my work in C++, Unreal Engine, web development, and collaborative software projects.',
     type: 'website',
   },
 }
@@ -23,8 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full`}>
       <body className="min-h-full flex flex-col antialiased">
         <ThemeProvider>
+          <a href="#main-content" className="skip-link">Skip to content</a>
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Download } from 'lucide-react'
+import PrintResume from '@/components/PrintResume'
 
 export const metadata: Metadata = {
   title: 'Resume — Sebastian Piwko',
@@ -51,13 +51,7 @@ export default function Resume() {
             <h1 className="text-3xl font-bold mb-1">Resume</h1>
             <p className="text-sm" style={{ color: 'var(--muted)' }}>Skills, education, and experience</p>
           </div>
-          <a
-            href="/resume.pdf"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-80 shrink-0"
-            style={{ background: 'var(--accent)' }}
-          >
-            <Download size={15} /> Download PDF
-          </a>
+          <PrintResume />
         </div>
       </div>
 
@@ -87,7 +81,7 @@ export default function Resume() {
                   className="text-sm px-3 py-1 rounded-full font-mono font-medium"
                   style={{
                     background: `${tagColors[skill] ?? '#64748b'}18`,
-                    color: tagColors[skill] ?? 'var(--muted)',
+                    color: 'var(--foreground)',
                     border: `1px solid ${tagColors[skill] ?? '#64748b'}30`,
                   }}
                 >
@@ -104,6 +98,7 @@ export default function Resume() {
           <ul className="text-sm space-y-1.5" style={{ color: 'var(--muted)' }}>
             {[
               'CS250 — Data Structures & Algorithms',
+              'CS314 - Team Project (Fall 2025)',
               'CS320 — Software Engineering',
               'CS356 — System Security',
               'Computer Systems',
